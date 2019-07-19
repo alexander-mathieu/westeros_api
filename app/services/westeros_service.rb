@@ -4,11 +4,19 @@ class WesterosService
   end
 
   def house_member_search
-    parse_api_call("house/#{house}")[:data][0][:attributes][:members]
+    parse_api_call("house/#{house_id}")
   end
-
+  
   private
   attr_reader :house
+
+  def house_id
+    results = parse_api_call('house')
+    house = results.detect do |result|
+      result[:name].downcase == @house
+    end
+    house[:id]
+  end
 
   def parse_api_call(url, params = {})
     response = conn.get(url, params)
@@ -16,8 +24,8 @@ class WesterosService
   end
 
   def conn
-    Faraday.new(url: 'http://westerosapi.herokuapp.com/api/v1') do |f|
-      f.params['api_key'] = ENV['SUPER_SECRET_KEY']
+    Faraday.new(url: 'https://westeros-as-a-service.herokuapp.com/api/v1/') do |f|
+      f.headers['x_api_key'] = ENV['NEW_SUPER_SECRET_KEY']
       f.adapter Faraday.default_adapter
     end
   end
