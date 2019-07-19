@@ -1,12 +1,10 @@
 class SearchIndexFacade
-  attr_reader :house
-
   def initialize(house)
     @house = house
   end
 
   def house_member_count
-    house_member_results.count
+    house_members.count
   end
 
   def house_members
@@ -18,10 +16,10 @@ class SearchIndexFacade
   private
 
   def house_member_results
-    @results ||= westeros_service.house_member_search
+    @house_member_results ||= westeros_service.house_member_search
   end
 
   def westeros_service
-    @westeros_service ||= WesterosService.new(house)
+    @westeros_service ||= WesterosService.new(@house)
   end
 end
