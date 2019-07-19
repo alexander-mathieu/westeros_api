@@ -1,0 +1,7 @@
+<section class='house-member-search'>
+  <%= form_tag :search, method: :get do %>
+    <%= label_tag 'Select House' %>
+    <%= select_tag :house, game_of_thrones_houses %>
+    <%= submit_tag 'Search Members' %>
+  <% end %>
+</section>
