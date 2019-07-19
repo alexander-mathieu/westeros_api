@@ -1,0 +1,10 @@
+<h1><%= facade.total_results %> Members</h1>
+
+<section class='member-results'>
+  <% facade.house_members each do |member| %>
+    <div class='member'>
+      <p>Name: <%= member.name %>
+      <p>ID: <%= member.id %></p>
+    <% end %>
+  </div>
+</section>
