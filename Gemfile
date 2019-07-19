@@ -20,7 +20,6 @@ group :development, :test do
   gem 'launchy'
   gem 'pry'
   gem 'rspec-rails'
-  gem 'webmock'
 end
 
 group :development do
