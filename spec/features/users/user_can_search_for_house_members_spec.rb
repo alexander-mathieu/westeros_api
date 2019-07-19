@@ -30,15 +30,13 @@ RSpec.describe 'As a user' do
       end
 
       it 'I see a list of the 7 members of House Greyjoy, each with a name and ID' do
+        expect(page).to have_css('.member', count: 7)
 
+        within(first('.member')) do
+          expect(page).to have_content('Name: Balon Greyjoy')
+          expect(page).to have_content('ID: 38')
+        end
       end
     end
   end
 end
-
-
-
-# Then my path should be "/search" with "house=greyjoy" in the parameters
-# And I should see a message "7 Members"
-# And I should see a list of the 7 members of House Greyjoy
-# And I should see a name and id for each member.
