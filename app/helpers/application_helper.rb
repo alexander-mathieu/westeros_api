@@ -1,5 +1,5 @@
 module ApplicationHelper
-  def game_of_thrones_houses
+  def got_houses
     [
       ['Stark', 'stark'],
       ['Lannister', 'lannister'],
